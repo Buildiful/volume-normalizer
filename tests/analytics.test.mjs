@@ -1,0 +1,34 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { initializeAnalytics, setAnalyticsConsent, analyticsConsent, track } from '../js/analytics.js';
+
+test('analytics does not load before explicit opt-in, tracks only after', () => {
+  const store = new Map();
+  const scripts = [];
+  const events = [];
+  globalThis.window = {};
+  globalThis.localStorage = { getItem: k => store.get(k) || null, setItem: (k, v) => store.set(k, v) };
+  globalThis.document = { head: { appendChild: node => scripts.push(node) }, createElement: tag => ({ tagName: tag }) };
+  globalThis.CustomEvent = class { constructor(name, opts) { this.type = name; this.detail = opts?.detail; } };
+  globalThis.dispatchEvent = evt => events.push(evt.type);
+  assert.equal(initializeAnalytics(), 'unknown');
+  assert.equal(scripts.length, 0);
+  track('export_started', { file_count: 2 });
+  assert.equal(scripts.length, 0);
+  setAnalyticsConsent('decline');
+  assert.equal(analyticsConsent(), 'decline');
+  assert.equal(scripts.length, 0);
+  setAnalyticsConsent('allow');
+  assert.equal(analyticsConsent(), 'allow');
+  assert.equal(scripts.length, 1);
+  assert.match(scripts[0].src, /G-TG14RBXLTF/);
+  track('export_completed', { exported_count: 2, output_format: 'wav16' });
+  const eventCalls = window.dataLayer.filter(v => v[0] === 'event');
+  assert.equal(eventCalls.length, 1);
+  assert.equal(eventCalls[0][1], 'export_completed');
+  assert.deepEqual(eventCalls[0][2], { exported_count: 2, output_format: 'wav16' });
+  setAnalyticsConsent('decline');
+  track('analysis_started', { file_count: 1 });
+  assert.equal(window.dataLayer.filter(v => v[0] === 'event').length, 1);
+  assert.equal(scripts.length, 1);
+});

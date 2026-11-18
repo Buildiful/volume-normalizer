@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#081b2c">
+  <meta name="description" content="Normalize the loudness of your music and recordings in your browser. Choose a folder, analyze LUFS, and export copies. Your originals stay untouched.">
+  <meta name="color-scheme" content="dark">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>Volume Normalizer by Buildiful®</title>
+  <link rel="icon" href="./assets/favicon.ico" sizes="any">
+  <link rel="icon" href="./assets/favicon-32x32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="./assets/favicon-16x16.png" sizes="16x16" type="image/png">
+  <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./js/app.js"></script>
+</head>
+<body>
+  <div class="site-shell">
+    <header class="site-header">
+      <a class="brand" href="https://buildiful.com" aria-label="Buildiful website">
+        <img src="./assets/buildiful-logo-white.png" alt="Buildiful®" width="118" height="37">
+      </a>
+      <span class="nav-separator" aria-hidden="true"></span>
+      <a class="product-name" href="./">Volume Normalizer</a>
+      <nav class="nav-actions" aria-label="Main navigation">
+        <a class="text-btn" href="./about.html" id="about-trigger">About the tool</a>
+        <a class="home-link" href="https://buildiful.github.io/" target="_blank" rel="noopener">More free tools <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="live-dot" aria-hidden="true"></span>No uploads. Files stay on your device.</div>
+          <h1 id="hero-title">Keep volume<br><em>consistent.</em></h1>
+          <p>Bring your music and recordings to a comfortable, consistent loudness. Batch analyze by LUFS, export new files, and keep every original exactly where it belongs.</p>
+          <div class="hero-features"><span>◉ &nbsp; Perceived loudness (LUFS)</span><span>◉ &nbsp; Preserve dynamics</span><span>◉ &nbsp; Local processing</span></div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="meter-head"><span>BEFORE</span><span>AFTER</span></div>
+          <div class="wave-rows">
+            <div class="wave-row"><span class="wave-label">TRACK 01</span><div class="waves waves-loud"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="wave-arrow">→</span><div class="waves waves-target"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+            <div class="wave-row"><span class="wave-label">TRACK 02</span><div class="waves waves-quiet"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="wave-arrow">→</span><div class="waves waves-target"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+            <div class="wave-row"><span class="wave-label">TRACK 03</span><div class="waves waves-mid"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="wave-arrow">→</span><div class="waves waves-target"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+          </div>
+          <div class="meter-foot"><span>GAIN MATCHING</span><span>−14 LUFS <span class="meter-icon">●</span></span></div>
+        </div>
+      </section>
+
+      <section class="workbench" aria-labelledby="workbench-title">
+        <div class="section-intro"><div><div class="section-kicker">YOUR WORKSPACE</div><h2 id="workbench-title">Normalize your library</h2></div><span class="quiet-tag">Works best in Chrome or Edge</span></div>
+        <div class="workspace-grid">
+          <div class="setup-stack">
+            <section class="panel" aria-labelledby="source-title">
+              <div class="panel-heading"><span class="step">01</span><div><h3 id="source-title">Choose your source</h3><p>Select a music folder or collection.</p></div></div>
+              <div class="directory-picker"><div class="folder-icon">▤</div><div class="directory-label"><strong id="source-name">No folder selected</strong><span id="source-sub">Your audio files stay on your device</span></div><button class="btn btn-outline" id="source-browse" type="button">Browse folder</button><button id="source-refresh" class="icon-btn" type="button" title="Rescan folder" aria-label="Rescan folder" hidden>↻</button></div>
+              <label class="checkline"><input id="include-subfolders" type="checkbox" checked><span class="checkcopy"><strong>Include subfolders</strong><small id="subfolders-help">Choose this before browsing. Re-select to change the imported set.</small></span></label>
+              <input id="folder-fallback" type="file" webkitdirectory multiple hidden aria-label="Select source folder">
+              <p class="hint">Supports browser-decodable MP3, WAV, FLAC, M4A, AAC, OGG and WebM audio. Actual codec support varies by browser.</p>
+            </section>
+
+            <section class="panel" aria-labelledby="settings-title">
+              <div class="panel-heading"><span class="step">02</span><div><h3 id="settings-title">Set your loudness</h3><p>Perceived volume, not just peak level.</p></div></div>
+              <div class="form-pair">
+                <div class="form-field"><label for="target-presets">Loudness preset</label><select id="target-presets"><option value="-14">Music · −14 LUFS</option><option value="-16">Spoken audio · −16 LUFS</option><option value="-18">Gentler listening · −18 LUFS</option><option value="-23">Broadcast reference · −23 LUFS</option><option value="custom">Custom</option></select></div>
+                <div class="form-field"><label for="target">Target LUFS</label><div class="number-wrap"><input id="target" type="number" min="-30" max="-8" step="0.5" value="-14"><span>LUFS</span></div></div>
+              </div>
+              <div class="form-pair">
+                <div class="form-field"><label for="ceiling">Sample peak ceiling</label><select id="ceiling"><option value="-2">−2 dBFS · safer margin</option><option value="-1.5">−1.5 dBFS</option><option value="-1">−1 dBFS</option><option value="-3">−3 dBFS · conservative</option></select></div>
+                <div class="form-field"><label for="format">Export format</label><select id="format"><option value="mp3">MP3 · 320 kbps</option><option value="wav16" selected>WAV · 16-bit PCM</option><option value="wav24">WAV · 24-bit PCM</option><option value="wav32">WAV · 32-bit float</option></select></div>
+              </div>
+              <div class="setting-note"><span class="note-icon">i</span><span><strong>One consistent gain per track.</strong> Music dynamics are preserved. If boosting would exceed the peak ceiling, the result stays below the chosen LUFS target. <span id="format-help"></span></span></div>
+            </section>
+
+            <section class="panel" aria-labelledby="destination-title">
+              <div class="panel-heading"><span class="step">03</span><div><h3 id="destination-title">Choose your destination</h3><p>New files only. Your originals stay untouched.</p></div></div>
+              <div class="directory-picker"><div class="folder-icon folder-output">↗</div><div class="directory-label"><strong id="destination-name">Download a ZIP instead</strong><span id="destination-sub">Or choose a folder to save each file as it finishes.</span></div><button class="btn btn-outline" id="destination-browse" type="button">Browse folder</button></div>
+              <div class="destination-options"><label class="checkline compact"><input id="preserve" type="checkbox" checked><span class="checkcopy"><strong>Preserve subfolder structure</strong><small>Keep artists and albums organized in the destination.</small></span></label><button class="subtle-link" id="zip-mode" type="button">Use ZIP download</button></div>
+              <p class="hint">Outputs receive a <code>[normalized]</code> suffix. Existing files are not overwritten; duplicate filenames simply get a numeric suffix.</p>
+            </section>
+          </div>
+
+          <aside class="summary-panel" aria-label="Batch summary">
+            <div class="summary-top"><span>PROCESSING PLAN</span><span class="summary-icon">♫</span></div>
+            <div class="summary-target" id="target-display">−14 LUFS</div><span class="summary-subtitle">TARGET LOUDNESS</span>
+            <div class="summary-divider"></div>
+            <div class="stat-line"><span>Files found</span><strong id="stat-total">0</strong></div>
+            <div class="stat-line"><span>Selected</span><strong id="stat-selected">0</strong></div>
+            <div class="stat-line"><span>Analyzed</span><strong id="stat-analyzed">0</strong></div>
+            <div class="stat-line"><span>Exported</span><strong id="stat-exported">0</strong></div>
+            <div class="summary-divider"></div>
+            <div class="summary-smalllabel">OUTPUT</div><div class="output-value" id="format-detail">WAV · 16-bit PCM</div><div class="output-value secondary" id="destination-mode">Download ZIP</div>
+            <div class="summary-divider"></div>
+            <div class="privacy-assurance"><span>✦</span><div><strong>Local audio processing</strong><p>Your audio files and filenames are not uploaded. Optional analytics only measures feature usage with consent.</p></div></div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="results-panel" aria-labelledby="results-title">
+        <div class="results-header"><div><div class="section-kicker">BATCH QUEUE</div><h2 id="results-title">Your audio files</h2><p id="results-label">Your audio files will appear here</p></div><div class="queue-actions"><input type="search" id="file-filter" class="file-filter" placeholder="Filter filenames…" aria-label="Filter audio filenames"><button type="button" class="subtle-link" id="select-all">Select all</button><button type="button" class="subtle-link" id="select-none">Select none</button></div></div>
+        <div id="empty-state" class="empty-state"><div class="empty-record">♫</div><strong>Nothing in the queue yet</strong><span>Pick a source folder to start your loudness analysis.</span></div>
+        <div id="results-table" class="table-scroll" hidden><table><thead><tr><th><span class="sr-only">Selected</span></th><th>FILE</th><th>BEFORE</th><th>GAIN</th><th>AFTER (EST.)</th><th>STATUS</th></tr></thead><tbody id="file-rows"></tbody></table></div>
+        <p class="queue-note" id="queue-note"></p>
+        <div id="progress-panel" class="progress-panel" hidden><div class="progress-heading"><span id="progress-message">Preparing…</span><span id="progress-count">0 / 0</span></div><div class="progress-track"><div class="progress-fill" id="progress-bar"></div></div></div>
+        <div class="results-footer"><div class="footer-action-note"><strong>Analyze first, then export.</strong><span id="analyze-helper">Analyzing does not modify your files.</span></div><div class="action-buttons"><button type="button" class="btn btn-ghost" id="cancel-btn" hidden>Stop after this file</button><button type="button" class="btn btn-outline btn-large" id="analyze-btn" disabled>Analyze selected</button><button type="button" class="btn btn-primary btn-large" id="export-btn" disabled>Export normalized files <span aria-hidden="true">↗</span></button></div></div>
+      </section>
+
+      <section class="footnotes" aria-label="Technical notes"><div><span class="footnote-number">01</span><p><strong>LUFS, not peak matching.</strong> Integrated loudness uses K-weighting and gated measurement. Tracks with very high peaks may finish below target to avoid clipping.</p></div><div><span class="footnote-number">02</span><p><strong>No compression or limiting.</strong> This version adjusts each entire track using one gain value; it does not squash quiet and loud passages.</p></div><div><span class="footnote-number">03</span><p><strong>Know your formats.</strong> WAV is larger and does not copy tags or artwork. MP3 encoding uses a separate third-party script and may re-encode lossy originals.</p></div></section>
+    </main>
+    <footer class="site-footer"><div>Built by <a href="https://buildiful.com" target="_blank" rel="noopener">Buildiful®</a> <span>·</span> Open source <span>·</span> v1.0.0</div><div><a href="./about.html">About</a><a href="./privacy.html">Privacy</a><button type="button" id="analytics-settings">Analytics settings</button><a href="https://buildiful.github.io" target="_blank" rel="noopener">More tools</a></div></footer>
+  </div>
+
+  <div class="consent-banner" id="consent-banner" role="dialog" aria-label="Optional analytics" aria-modal="false" hidden><div class="consent-icon">✳</div><div class="consent-copy"><strong>Help us improve our free tools?</strong><p>With your permission, we use Google Analytics to measure feature usage. We never upload audio files or send filenames. You can change your choice any time. <a href="./privacy.html">Privacy details</a></p></div><div class="consent-actions"><button class="btn btn-outline" id="analytics-decline" type="button">No thanks</button><button class="btn btn-primary" id="analytics-allow" type="button">Allow analytics</button><button class="consent-close" type="button" id="analytics-close" aria-label="Close banner">×</button></div></div>
+  <div id="toasts" class="toast-stack" aria-live="polite"></div>
+</body>
+</html>

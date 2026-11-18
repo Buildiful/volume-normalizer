@@ -1,0 +1,38 @@
+# OS / local editor
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# Local dependencies and build output
+node_modules/
+dist/
+build/
+coverage/
+.cache/
+.tmp/
+tmp/
+*.log
+
+# Local config and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Audio and generated exports (leave out user files)
+*.mp3
+*.m4a
+*.aac
+*.flac
+*.wav
+*.ogg
+*.oga
+*.opus
+*.webm
+*.zip

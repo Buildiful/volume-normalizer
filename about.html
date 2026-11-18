@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#081b2c">
+  <meta name="description" content="About Volume Normalizer by Buildiful®: local browser-based audio loudness normalization, privacy, and formats.">
+  <title>About Volume Normalizer · Buildiful®</title>
+  <link rel="icon" href="./assets/favicon.ico" sizes="any">
+  <link rel="icon" href="./assets/favicon-32x32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="./assets/favicon-16x16.png" sizes="16x16" type="image/png">
+  <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="./styles.css">
+  <style>
+    .about-wrap{max-width:780px;margin:76px auto 96px}
+    .about-wrap h1{font-size:clamp(36px,5vw,54px);letter-spacing:-.055em;margin:15px 0 25px}
+    .about-wrap h2{font-size:20px;letter-spacing:-.02em;margin:33px 0 10px}
+    .about-wrap p{font-size:14px;line-height:1.85;color:#b0c7d2;margin:12px 0}
+    .about-wrap .lead{font-size:17px;color:#d3e5e9}
+    .about-wrap a{color:#ace5d8}
+    .about-wrap .return-link{display:inline-block;margin-top:24px}
+    @media(max-width:600px){.about-wrap{margin:46px auto 72px}}
+  </style>
+</head>
+<body>
+  <div class="site-shell">
+    <header class="site-header">
+      <a class="brand" href="https://buildiful.com" aria-label="Buildiful website"><img src="./assets/buildiful-logo-white.png" alt="Buildiful®" width="118" height="37"></a>
+      <span class="nav-separator" aria-hidden="true"></span>
+      <a class="product-name" href="./">Volume Normalizer</a>
+      <nav class="nav-actions" aria-label="Main navigation"><a class="home-link" href="./">Back to tool</a></nav>
+    </header>
+    <main class="about-wrap">
+      <div class="section-kicker">ABOUT THIS TOOL</div>
+      <h1>Volume Normalizer</h1>
+      <p class="lead">Keep volume consistent across your music and audio recordings.</p>
+      <p>Volume Normalizer is a free, open-source batch loudness normalizer. Choose audio files from a folder, analyze perceived loudness, and export normalized copies. The original files remain untouched.</p>
+      <h2>How it works</h2>
+      <p>The tool measures each recording using ITU-R BS.1770 K-weighted loudness metering with EBU R128-style gating. It calculates one gain adjustment per track to preserve musical dynamics and uses a sample-peak ceiling to avoid digital sample clipping. A track with strong peaks may end up below the requested LUFS target.</p>
+      <p>Volume Normalizer does not use dynamic compression or limiting, and it is <strong>not</strong> a certified true-peak limiter.</p>
+      <h2>Files stay on your device</h2>
+      <p>Audio is decoded, measured, and exported locally in your browser. No audio is uploaded. Existing files are not overwritten; duplicate filenames simply get a numeric suffix. Optional Google Analytics runs only with consent and does not receive your filenames or audio. Read the <a href="./privacy.html">privacy notice</a> for details.</p>
+      <h2>Browser and formats</h2>
+      <p>Chrome or Edge is recommended for folder selection and direct destination-folder exports. Other supported browsers can import files and export ZIP downloads, depending on their capabilities and memory limits.</p>
+      <p>Inputs depend on browser decoding support. WAV exports require no additional encoder download. MP3 exports load an optional external encoder and may introduce some generational quality loss when re-encoding compressed audio.</p>
+      <p>Version 1.0.0 · Built by Buildiful®.</p>
+      <a class="return-link" href="./">← Return to Volume Normalizer</a>
+    </main>
+    <footer class="site-footer">
+      <div>Built by <a href="https://buildiful.com" target="_blank" rel="noopener">Buildiful®</a> <span>·</span> Open source <span>·</span> v1.0.0</div>
+      <div><a href="./">Volume Normalizer</a><a href="./privacy.html">Privacy</a><a href="https://buildiful.github.io" target="_blank" rel="noopener">More tools</a></div>
+    </footer>
+  </div>
+</body>
+</html>
